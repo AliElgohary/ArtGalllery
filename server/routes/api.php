@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,17 @@ Route::group(
         'namespace' => 'App\Http\Controllers'
     ],
     function () {
+        //User routes
+        Route::group(
+            [
+                'prefix' => 'auth',
+            ],
+            function () {
+                Route::post('/register', 'AuthController@register');
+                Route::post('/login', 'AuthController@login');
+            }
+        );
+
         // Products routes
         Route::group(
             [
@@ -35,4 +47,3 @@ Route::group(
         );
     }
 );
-
