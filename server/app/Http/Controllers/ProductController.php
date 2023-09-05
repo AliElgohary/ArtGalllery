@@ -54,4 +54,11 @@ class ProductController extends Controller
             'message' => 'Product deleted successfully'
         ]);
     }
+    public function getProductById($id){
+        $product = Product::findOrFail($id);
+        return response()->json([
+            'success' => true,
+            'data' => $product
+        ]);
+    }
 }

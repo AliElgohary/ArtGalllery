@@ -30,6 +30,7 @@ Route::group(
                 Route::get('/', 'ProductController@index');
                 Route::put('/{id}', 'ProductController@update');
                 Route::delete('/{id}', 'ProductController@delete');
+                Route::get('/{id}', 'ProductController@getProductById');
             }
         );
     }
