@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Product\CreateProductRequest;
+use App\Http\Requests\Product\DeleteProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Product;
 
@@ -45,7 +46,7 @@ class ProductController extends Controller
             'data' => $product
         ]);
     }
-    public function delete ($id){
+    public function delete ($id , DeleteProductRequest $request){
         $product = Product::findOrFail($id);
         $product->delete();
         return response()->json([

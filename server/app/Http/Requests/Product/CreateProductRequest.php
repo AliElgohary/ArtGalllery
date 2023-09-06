@@ -12,6 +12,9 @@ class CreateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        if(auth()->user()->role != 'admin'){
+            return false;
+        }
         return true;
     }
 

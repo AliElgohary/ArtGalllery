@@ -39,11 +39,11 @@ Route::group(
                 'prefix' => 'products',
             ],
             function () {
-                Route::post('/', 'ProductController@create');
                 Route::get('/', 'ProductController@index');
-                Route::put('/{id}', 'ProductController@update');
-                Route::delete('/{id}', 'ProductController@delete');
-                Route::get('/{id}', 'ProductController@getProductById');
+                Route::post('/', 'ProductController@create')->middleware(['auth:sanctum']);
+                Route::put('/{id}', 'ProductController@update')->middleware(['auth:sanctum']);
+                Route::delete('/{id}', 'ProductController@delete')->middleware(['auth:sanctum']);
+                Route::get('/{id}', 'ProductController@getProductById')->middleware(['auth:sanctum']);
             }
         );
     }

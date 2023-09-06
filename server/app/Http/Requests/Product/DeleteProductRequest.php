@@ -4,7 +4,7 @@ namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProductRequest extends FormRequest
+class DeleteProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +25,7 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string|max:50|unique:products,name,' . $this->id,
-            'description' => 'string|max:150',
-            'price' => 'numeric',
-            'stock' => 'integer',
-            'image' => 'string|max:200',
-            'category' => 'string|max:50',
-            'status' => 'boolean',
+            //
         ];
     }
 }
