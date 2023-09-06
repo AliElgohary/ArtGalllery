@@ -11,7 +11,7 @@ class UpdateOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'customer_name' => 'string|max:255',
+            'customer_email' => 'email|max:255',
+            'customer_phone' => 'string|max:20',
+            'customer_address' => 'string|max:255',
         ];
     }
 }

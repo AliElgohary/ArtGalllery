@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Order\AllOrdersRequest;
 use App\Http\Requests\Order\CreateOrderRequest;
+use App\Http\Requests\Order\DeleteOrderRequest;
+use App\Http\Requests\Order\UpdateOrderRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -16,12 +18,6 @@ class OrderController extends Controller
                 'success' => false,
                 'message' => 'error getting orders',
 
-            ]);
-        }
-        if (!empty($orders)) {
-            return response()->json([
-                'success' => true,
-                'message' => 'orders are empty',
             ]);
         }
         return response()->json([
@@ -62,5 +58,41 @@ class OrderController extends Controller
                 'error' => $e
             ], 500);
         }
+    }
+    public function update($id, UpdateOrderRequest $request)
+    {
+        try{
+            $order = Order::find($id);
+            $validatedData = $request->validated();
+            $order->update($validatedData);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Order updated successfully',
+                'data' => $order
+            ], 200);
+        }catch (\Exception $e){
+            return response()->json([
+                'success' => false,
+                'message' => 'Error updating the order.',
+                'error' => $e
+            ]);
+        }
+    }
+
+
+    public function delete($id , DeleteOrderRequest $request){
+        $order = Order::find($id);
+        if(!$order) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Order not found'
+            ]);
+        }
+        $order->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Order deleted successfully'
+        ]);
     }
 }

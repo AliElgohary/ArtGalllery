@@ -52,6 +52,8 @@ Route::group(
         ], function(){
             Route::get('/', 'OrderController@index')->middleware('auth:sanctum');
             Route::post('/', 'OrderController@create')->middleware('auth:sanctum');
+            Route::delete('/{id}', 'OrderController@delete')->middleware(['auth:sanctum']);
+            Route::put('/{id}', 'OrderController@update')->middleware(['auth:sanctum']);
         });
     }
 );
