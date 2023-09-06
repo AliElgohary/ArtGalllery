@@ -33,22 +33,12 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $credentials = $request->only('email', 'password');
+        $auth = $request->login();
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user(); // Get the authenticated user
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Login successful',
-                'data' => $user, // Include the authenticated user data
-            ]);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Login failed: Invalid credentials',
-                'data' => null,
-            ], 401);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'User logged in successfully',
+            'data' => $auth,
+        ], 200);
     }
 }
