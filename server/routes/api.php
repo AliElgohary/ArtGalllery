@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,5 +45,12 @@ Route::group(
                 Route::get('/{id}', 'ProductController@getProductById')->middleware(['auth:sanctum']);
             }
         );
+
+        //orders routes
+        Route::group([
+            'prefix' => 'order',
+        ], function(){
+            Route::get('/', 'OrderController@index')->middleware('auth:sanctum');
+        });
     }
 );
