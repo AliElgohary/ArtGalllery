@@ -51,6 +51,7 @@ Route::group(
             'prefix' => 'order',
         ], function(){
             Route::get('/', 'OrderController@index')->middleware('auth:sanctum');
+            Route::post('/', 'OrderController@create')->middleware('auth:sanctum');
         });
     }
 );

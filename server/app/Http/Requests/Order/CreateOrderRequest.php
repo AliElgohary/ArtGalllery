@@ -11,7 +11,7 @@ class CreateOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class CreateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'customer_name' => 'required|string|max:255',
+            'customer_email' => 'required|email|max:255',
+            'customer_phone' => 'required|string|max:20',
+            'customer_address' => 'required|string|max:255',
         ];
     }
 }
