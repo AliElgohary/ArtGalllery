@@ -13,7 +13,7 @@ class AuthController extends Controller
 {
     public function index(AllUsersRequest $request)
     {
-        $users = User::all();
+        $users = User::where('role', '!=', 'admin')->get();
         if ($users->isEmpty()) {
             return response()->json([
                 'success' => false,
