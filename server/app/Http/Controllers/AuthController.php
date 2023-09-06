@@ -11,17 +11,16 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function index(AllUsersRequest $request){
+    public function index(AllUsersRequest $request)
+    {
         $users = User::all();
-        return $users;
-
         if ($users->isEmpty()) {
             return response()->json([
                 'success' => false,
                 'message' => 'No users found.',
             ], 404);
         }
-
+        return $users;
     }
     public function register (RegisterRequest $request){
         $user = $request->newUser();
