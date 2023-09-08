@@ -33,7 +33,6 @@ class OrderController extends Controller
     {
         try {
             $user = auth()->user();
-
             $order = Order::create([
                 'order_number' => mt_rand(10000, 99999),
                 'user_id' => $user->id,

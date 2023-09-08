@@ -55,5 +55,15 @@ Route::group(
             Route::delete('/{id}', 'OrderController@delete')->middleware(['auth:sanctum']);
             Route::put('/{id}', 'OrderController@update')->middleware(['auth:sanctum']);
         });
+
+        //orderItems routes
+        Route::group([
+            'prefix' => 'item'
+        ], function (){
+            Route::get('/', 'OrderItemController@index');
+            Route::post('/', 'OrderItemController@create');
+            Route::put('/{id}', 'OrderItemController@update');
+            Route::delete('/{id}', 'OrderItemController@delete');
+        });
     }
 );
