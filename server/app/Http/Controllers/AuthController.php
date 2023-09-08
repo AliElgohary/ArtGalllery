@@ -22,19 +22,27 @@ class AuthController extends Controller
         }
         return $users;
     }
-    public function register (RegisterRequest $request){
-        $user = $request->newUser();
-        return response()->json([
-            'success' => true,
-            'message' => 'user registration successful',
-            'data' => $user
-        ]);
+    public function register(RegisterRequest $request)
+    {
+        try {
+            $user = $request->newUser();
+            return response()->json([
+                'success' => true,
+                'message' => 'user registration successful',
+                'data' => $user
+            ],201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'user registration failed',
+                'error' => $e
+            ], 500);
+        }
     }
 
     public function login(LoginRequest $request)
     {
         $auth = $request->login();
-
         return response()->json([
             'success' => true,
             'message' => 'User logged in successfully',

@@ -27,9 +27,9 @@ class RegisterRequest extends FormRequest
             'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8',
-            'role' => 'required|string',
-            'phone' => 'nullable|string|min:11|max:11',
-            'address' => 'nullable|string|max:100',
+            'role' => 'string',
+            'phone' => 'string|min:11|max:11|',
+            'address' => 'string|max:100',
         ];
     }
 
@@ -38,7 +38,7 @@ class RegisterRequest extends FormRequest
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
-            'role' => $this->role,
+            'role' => $this->role ?? 'user',
             'phone' => $this->phone,
             'address' => $this->address,
         ]);
