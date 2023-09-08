@@ -79,10 +79,9 @@
    - JSON Body Example:
      ```json
      {
-         "customer_name": "new name",
-         "customer_email": "new email",
          "customer_phone": "new phone number",
-         "customer_address": "new address"
+         "customer_address": "new address",
+         "order status" : "new order status"
      }
      ```
 
