@@ -60,9 +60,9 @@ Route::group(
         Route::group([
             'prefix' => 'item'
         ], function (){
-            Route::get('/', 'OrderItemController@index');
-            Route::post('/', 'OrderItemController@create');
-            Route::delete('/{id}', 'OrderItemController@delete');
+            Route::get('/', 'OrderItemController@index')->middleware('auth:sanctum');
+            Route::post('/', 'OrderItemController@create')->middleware('auth:sanctum');
+            Route::delete('/{id}', 'OrderItemController@delete')->middleware('auth:sanctum');
         });
     }
 );
