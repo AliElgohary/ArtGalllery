@@ -57,14 +57,12 @@ class OrderItemController extends Controller
             ]);
         }
     }
-
-    public function update($id , UpdateOrderItemRequest $request){
+    public function delete ($id){
         $orderItem = OrderItem::find($id);
-        $orderItem->update($request->validated());
+        $orderItem->delete();
         return response()->json([
             'success' => true,
-            'message' => 'Order updated successfully',
-            'data' => $orderItem
+            'message' => 'Order deleted successfully',
         ]);
     }
 }

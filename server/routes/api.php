@@ -62,7 +62,6 @@ Route::group(
         ], function (){
             Route::get('/', 'OrderItemController@index');
             Route::post('/', 'OrderItemController@create');
-            Route::put('/{id}', 'OrderItemController@update');
             Route::delete('/{id}', 'OrderItemController@delete');
         });
     }
