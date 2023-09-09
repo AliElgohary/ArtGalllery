@@ -54,6 +54,7 @@ Route::group(
             Route::post('/', 'OrderController@create')->middleware('auth:sanctum');
             Route::delete('/{id}', 'OrderController@delete')->middleware(['auth:sanctum']);
             Route::put('/{id}', 'OrderController@update')->middleware(['auth:sanctum']);
+            Route::get('/history', 'OrderController@getOrderHistory')->middleware('auth:sanctum');
         });
 
         //orderItems routes

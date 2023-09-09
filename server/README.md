@@ -68,13 +68,16 @@
 1. Get all orders - A GET request
    - Endpoint: [http://localhost:8000/api/v1/order]
 
-2. Create a new order - A POST request
+2. Get order History for single user - A GET request
+   - Endpoint: [http://localhost:8000/api/v1/order/history]
+
+3. Create a new order - A POST request
    - Endpoint: [http://localhost:8000/api/v1/order]
 
-3. Delete order by ID - A DELETE request
+4. Delete order by ID - A DELETE request
    - Endpoint: [http://localhost:8000/api/v1/order/1]
 
-4. Update order by ID - A PUT request
+5. Update order by ID - A PUT request
    - Endpoint: [http://localhost:8000/api/v1/order/1]
    - JSON Body Example:
      ```json
