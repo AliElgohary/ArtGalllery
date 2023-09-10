@@ -1,5 +1,12 @@
-// src/styles.scss
 @import '../node_modules/bootstrap/scss/bootstrap';
 
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-
+body {
+  font-family: 'Inter', sans-serif;
+}
