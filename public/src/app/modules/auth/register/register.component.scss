@@ -16,5 +16,9 @@ form {
     line-height: normal;
     border-radius: 10px;
     border: 2px solid #fff;
+    &:hover {
+      background-color: white;
+      color: black;
+    }
   }
 }

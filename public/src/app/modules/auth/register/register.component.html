@@ -1,40 +1,38 @@
-<form class="container">
+<form class="container" #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
   <!-- Name input -->
   <div class="form-outline mb-4">
-    <input type="text" id="form2Example0" class="form-control" />
+    <input type="text" id="form2Example0" class="form-control" ngModel name="name" required />
     <label class="form-label" for="form2Example0">Name</label>
   </div>
 
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="email" id="form2Example1" class="form-control" />
+    <input type="email" id="form2Example1" class="form-control" ngModel name="email" required email />
     <label class="form-label" for="form2Example1">Email address</label>
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <input type="password" id="form2Example4" class="form-control" />
+    <input type="password" id="form2Example4" class="form-control" ngModel name="password" required minlength="6" />
     <label class="form-label" for="form2Example4">Password</label>
   </div>
 
   <!-- Phone input -->
   <div class="form-outline mb-4">
-    <input type="tel" id="form2Example2" class="form-control" placeholder="please input 11 numbers" />
+    <input type="tel" id="form2Example2" class="form-control" ngModel name="phone" required pattern="[0-9]{11}" />
     <label class="form-label" for="form2Example2">Phone</label>
   </div>
 
   <!-- Address input -->
   <div class="form-outline mb-4">
-    <input type="text" id="form2Example3" class="form-control" />
+    <input type="text" id="form2Example3" class="form-control" ngModel name="address" required />
     <label class="form-label" for="form2Example3">Address</label>
   </div>
 
-
-  <!-- Submit button -->
-  <button type="button" class="btn">Sign Up</button>
+  <!-- Submit button (type="submit") -->
+  <button type="submit" class="btn">Sign Up</button>
 
   <div class="text-center">
     <p>Already have an account? <a routerLink="/auth" class="link-light link-underline-opacity-25-hover">Login</a></p>
   </div>
-
 </form>

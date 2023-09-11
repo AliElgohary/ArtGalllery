@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,10 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   isLogedIn: boolean = true;
   onSwitchMode(){
-    this.isLogedIn = false;
+    this.isLogedIn = !this.isLogedIn;
+  }
+  onSubmit(form : NgForm) {
+    console.log(form.value);
+    form.reset();
   }
 }
