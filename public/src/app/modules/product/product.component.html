@@ -1,2 +1,4 @@
-
-<p>product works!</p>
+<li *ngfor="let product of products">
+  <h2>{{ product.name }}</h2>
+  <p>{{ product.description }}</p>
+</li>
