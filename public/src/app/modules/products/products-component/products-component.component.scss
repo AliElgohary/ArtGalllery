@@ -1,8 +1,9 @@
 .container {
-  margin-top: 3rem;
+  margin: 3rem auto;
+  font-family: 'Inter';
 }
 .card {
-  width: 18rem;
+  max-width: 22rem;
   margin: 10px;
   div {
     color: white;
@@ -10,6 +11,7 @@
   img {
     margin-top: 1rem;
     border-radius: 10px;
+    height: 500px;
   }
   button {
     color: #fff;
@@ -20,5 +22,9 @@
     line-height: normal;
     border-radius: 10px;
     border: 2px solid #fff;
+    &:hover {
+      background-color: white;
+      color: black;
+    }
   }
 }

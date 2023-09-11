@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   },
+  {
+    path: 'history',
+    loadChildren: () => import('./modules/history/history.module').then(m => m.HistoryModule)
+  }
 ];
 
 @NgModule({
