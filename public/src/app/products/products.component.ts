@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss'],
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss']
 })
-export class ProductComponent implements OnInit {
-  products!: any[]; // Create a property to store the fetched products
+export class ProductsComponent implements OnInit {
+  products!: any[];
 
   constructor(private http: HttpClient) {
   }
@@ -31,4 +30,3 @@ export class ProductComponent implements OnInit {
     );
   }
 }
-

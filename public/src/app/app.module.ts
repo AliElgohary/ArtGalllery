@@ -6,6 +6,8 @@ import { HeaderComponent } from './core/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
+import { ProductsComponent } from './products/products.component';
+
 
 
 
@@ -14,6 +16,7 @@ import { CommonModule } from '@angular/common';
   declarations: [
     AppComponent,
     HeaderComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
