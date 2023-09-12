@@ -5,10 +5,6 @@ import { catchError, tap } from 'rxjs/operators';
 import { User } from 'src/app/modules/auth/user.model';
 
 
-// ...
-
-
-
 interface RegistrationData {
   name: string;
   email: string;
