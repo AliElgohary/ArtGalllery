@@ -4,6 +4,11 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from 'src/app/modules/auth/user.model';
 
+
+// ...
+
+
+
 interface RegistrationData {
   name: string;
   email: string;
@@ -30,9 +35,17 @@ export class AuthService {
 
   login(credentials: LoginCredentials): Observable<User> {
     return this.http
-      .post<User>('http://localhost:8000/api/v1/auth/login', credentials)
+      .post<any>('http://localhost:8000/api/v1/auth/login', credentials)
       .pipe(
-        tap((user: User) => {
+        tap((response: any) => {
+          console.log('API Response:', response);
+          const user = new User(
+            response.data.email,
+            response.data.id,
+            response.data.token,
+            response.role
+          );
+          console.log('User Object:', user);
           this.isAuthenticatedSubject.next(true);
           this.currentUserSubject.next(user);
         }),
@@ -41,6 +54,7 @@ export class AuthService {
         })
       );
   }
+
 
   register(formData: RegistrationData): Observable<any> {
     return this.http

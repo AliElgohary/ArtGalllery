@@ -33,6 +33,9 @@ class LoginRequest extends FormRequest
             if (!$auth) throw new \Exception('Invalid credentials');
             return [
                 'token' => auth()->user()->createToken('auth_token')->plainTextToken,
+                'role' => auth()->user()->role,
+                'email' => auth()->user()->email,
+                'id' => auth()->user()->id
             ];
         } catch (\Exception $e) {
             return response()->json([
