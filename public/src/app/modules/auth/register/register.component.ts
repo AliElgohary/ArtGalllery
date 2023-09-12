@@ -9,7 +9,6 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent {
   constructor(private http: HttpClient) { }
-
   onRegister(registerForm: NgForm) {
     if (registerForm.valid) {
       const formData = registerForm.value;
