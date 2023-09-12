@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router'; // Import Router to navigate after successful login
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +10,9 @@ import { Router } from '@angular/router'; // Import Router to navigate after suc
 })
 export class LoginComponent {
   isLoggedIn: boolean = true;
+  errorMessage: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSwitchMode() {
     this.isLoggedIn = !this.isLoggedIn;
@@ -20,33 +21,17 @@ export class LoginComponent {
   login(loginForm: NgForm): void {
     if (loginForm.valid) {
       const formData = loginForm.value;
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-        }),
-      };
-      const loginData = {
-        email: formData.email,
-        password: formData.password,
-      };
-      this.http
-        .post('http://localhost:8000/api/v1/auth/login', loginData, httpOptions)
-        .subscribe(
-          (response: any) => {
-            console.log('Response from server:', response);
-            if (response.success && response.data && response.data.token) {
-              const userToken = response.data.token;
-              console.log('User token:', userToken,response.data.role);
-              this.router.navigate(['/products']);
-            } else {
-              console.log('Invalid response from server.');
-            }
-          },
-          (err) => {
-            console.log('Error during login: ' + err);
-          }
-        );
 
+      this.authService.login(formData).subscribe(
+        (user) => {
+          console.log('User logged in successfully:', user);
+          this.router.navigate(['/products']);
+        },
+        (error) => {
+          console.error('Error during login:', error);
+          this.errorMessage = error;
+        }
+      );
       loginForm.reset();
     }
   }
