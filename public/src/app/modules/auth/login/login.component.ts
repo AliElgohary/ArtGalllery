@@ -36,6 +36,7 @@ export class LoginComponent {
             console.log('Response from server:', response);
             if (response.success && response.data && response.data.token) {
               const userToken = response.data.token;
+              console.log('User token:', userToken,response.data.role);
               this.router.navigate(['/products']);
             } else {
               console.log('Invalid response from server.');

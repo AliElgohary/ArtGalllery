@@ -47,6 +47,7 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'User logged in successfully',
             'data' => $auth,
+            'role' => auth()->user()->role
         ], 200);
     }
 }
