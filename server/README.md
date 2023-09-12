@@ -6,7 +6,7 @@
    - Endpoint: [http://localhost:8000/api/v1/auth]
 
 2. To create a new user - A POST request
-   - Endpoint: [http://localhost:8000/api/v1/auth]
+   - Endpoint: [http://localhost:8000/api/v1/auth/register]
    - JSON Body Example:
      ```json
      {
@@ -19,7 +19,7 @@
      ```
 
 3. To log in with an existing user - A POST request
-   - Endpoint: [http://localhost:8000/api/v1/auth]
+   - Endpoint: [http://localhost:8000/api/v1/auth/login]
    - JSON Body Example:
      ```json
      {
