@@ -16,7 +16,7 @@ export class LoginComponent {
     this.isLogedIn = !this.isLogedIn;
   }
 
-  onSubmit(loginForm: NgForm) {
+  login(loginForm: NgForm): any {
     if (loginForm.valid) {
       const formData = loginForm.value;
       const httpOptions = {
@@ -28,16 +28,24 @@ export class LoginComponent {
         email: formData.email,
         password: formData.password,
       };
-      this.http.post(
-        'http://localhost:8000/api/v1/auth/login',
-        loginData,
-        httpOptions
-      ).subscribe(response => {
-        console.log(response);
-      }, err => {
-        console.log('Error during login: ' + err);
-      });
+      if (this.isLogedIn) {
 
+      } else {
+        return this.http
+          .post(
+            'http://localhost:8000/api/v1/auth/login',
+            loginData,
+            httpOptions
+          )
+          .subscribe(
+            (response) => {
+              console.log(response);
+            },
+            (err) => {
+              console.log('Error during login: ' + err);
+            }
+          );
+      }
       loginForm.reset();
     }
   }
