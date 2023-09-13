@@ -1,13 +1,12 @@
-  <div class="row container">
-    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of products">
-      <div class="card bg-dark container">
-        <img [src]="item.image" [alt]="item.name">
-        <div class="card-body">
-          <h3 class="card-title">{{ item.name }}</h3>
-          <p class="card-text">{{ item.description}}</p>
-          <button class="btn">Add To Cart</button>
-        </div>
+<div class="row container">
+  <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of products">
+    <div class="card bg-dark container">
+      <img [src]="item.image" [alt]="item.name">
+      <div class="card-body">
+        <h3 class="card-title">{{ item.name }}</h3>
+        <p class="card-text">{{ item.description }}</p>
+        <button class="btn" (click)="addToCart(item)">Add To Cart</button>
       </div>
     </div>
   </div>
-
+</div>

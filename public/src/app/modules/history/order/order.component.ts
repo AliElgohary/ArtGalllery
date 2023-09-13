@@ -9,8 +9,16 @@ import { OrderData } from '../order.model';
 })
 export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService) {}
-
   orderData: OrderData[] = [];
+  getOrderItems() {
+    const cartJSON = localStorage.getItem('cartItems');
+    if (cartJSON) {
+      const cart = JSON.parse(cartJSON);
+      console.log(cart);
+    } else {
+      console.log('Cart is empty or not found in local storage.');
+    }
+  }
 
   ngOnInit(): void {
     this.orderService.getOrderHistory().subscribe(
@@ -22,5 +30,6 @@ export class OrderComponent implements OnInit {
         console.error('Error fetching order history:', error);
       }
     );
+    this.getOrderItems();
   }
 }

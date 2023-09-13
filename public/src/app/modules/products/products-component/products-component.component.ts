@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Product } from '../product.model';
 @Component({
   selector: 'app-products-component',
   templateUrl: './products-component.component.html',
@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductsComponentComponent {
   products!: any[];
+  cartItems: Product [] = [];
 
   constructor(private http: HttpClient) {
   }
@@ -29,5 +30,9 @@ export class ProductsComponentComponent {
         }
       }
     );
+  }
+  addToCart(item  : Product) {
+    this.cartItems.push(item);
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 }
