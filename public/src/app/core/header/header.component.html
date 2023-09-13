@@ -31,7 +31,7 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          routerLink="history"
+          routerLink="cart"
           *ngIf="isAuthenticated && !isUserAdmin()"
         >
           Order
@@ -40,7 +40,7 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          routerLink="admin"
+          routerLink="panel"
           *ngIf="isAuthenticated && isUserAdmin()"
         >
           Admin Panel
@@ -51,7 +51,7 @@
         <a class="nav-link" routerLink="auth">Login</a>
       </li>
       <li class="nav-item" *ngIf="isAuthenticated">
-        <a class="nav-link" (click)="onLogout()">Logout</a>
+        <a class="nav-link" (click)="onLogout()" routerLink="auth">Logout</a>
       </li>
     </ul>
   </div>
