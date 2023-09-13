@@ -4,13 +4,11 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { APIres } from 'src/app/modules/history/order.model';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
   private baseURL: string = 'http://localhost:8000/api/v1/order';
-
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   getOrderHistory(): Observable<APIres> {
