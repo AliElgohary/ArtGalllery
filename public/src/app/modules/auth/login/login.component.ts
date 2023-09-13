@@ -25,6 +25,7 @@ export class LoginComponent {
       this.authService.login(formData).subscribe(
         (user) => {
           console.log('User logged in successfully:', user);
+
           this.router.navigate(['/products']);
         },
         (error) => {

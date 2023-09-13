@@ -26,6 +26,7 @@ export class AuthService {
   public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
+  private userToken : string | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -41,7 +42,7 @@ export class AuthService {
             response.data.token,
             response.role
           );
-          console.log('User Object:', user);
+          this.userToken = response.data.token;
           this.isAuthenticatedSubject.next(true);
           this.currentUserSubject.next(user);
         }),
@@ -62,6 +63,9 @@ export class AuthService {
           return throwError('Registration failed: ' + error.message);
         })
       );
+  }
+  getToken(){
+    return this.userToken;
   }
 
   logout(): void {
