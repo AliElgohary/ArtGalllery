@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/services/order/order.service';
 import { OrderData } from '../order.model';
+import { OrderItemService } from 'src/app/services/orderItem/order-item.service';
 
 @Component({
   selector: 'app-order',
@@ -8,7 +9,7 @@ import { OrderData } from '../order.model';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  constructor(private orderService: OrderService) {}
+  constructor(private orderService: OrderService, private orderItemsService: OrderItemService) {}
   orderData: OrderData[] = [];
   getOrderItems() {
     const cartJSON = localStorage.getItem('cartItems');

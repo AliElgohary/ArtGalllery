@@ -32,5 +32,6 @@
       </ul>
     </div>
   </div>
-  <button class="btn btn-secondary btn-lg align-middle" routerLink="checkout" *ngIf="cartItems.length > 0">Buy Now</button>
+  <button class="btn btn-secondary btn-lg align-middle" (click)="createAndAddToOrder()" *ngIf="cartItems.length > 0">Buy Now</button>
+
 </div>
