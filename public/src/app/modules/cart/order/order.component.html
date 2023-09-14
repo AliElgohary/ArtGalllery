@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <h2 class="text-light">Your Cart</h2>
-      <div *ngIf="cartItems.length === 0" class="alert alert-info text-light">
+      <div *ngIf="cartItems.length === 0" class="alert alert-info bg-dark text-light">
         Your cart is empty.
       </div>
       <ul class="list-group" *ngIf="cartItems.length > 0">
@@ -32,5 +32,5 @@
       </ul>
     </div>
   </div>
-  <button class="btn btn-secondary btn-lg align-middle">Buy Now</button>
+  <button class="btn btn-secondary btn-lg align-middle" routerLink="checkout" *ngIf="cartItems.length > 0">Buy Now</button>
 </div>
