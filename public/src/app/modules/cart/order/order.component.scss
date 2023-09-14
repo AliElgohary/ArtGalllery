@@ -1,16 +1,24 @@
-/* Dark background color for the entire container */
 .dark-bg {
   background-color: #333;
   color: #fff; /* Text color */
   padding: 20px;
 }
 
-/* Dark background color for each cart item */
 .dark-item {
   background-color: #444;
 }
 
-/* Additional styles for text color */
 .text-light {
   color: #fff;
+}
+.container {
+  border-radius: 10px;
+}
+
+.btn-danger {
+  width: 100%;
+}
+
+.btn-secondary{
+  margin-top: 15px;
 }
