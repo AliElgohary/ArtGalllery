@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/services/order/order.service';
-import { OrderData } from '../order.model';
+import { OrderData, orderHistory } from '../order.model';
 import { OrderItemService } from 'src/app/services/orderItem/order-item.service';
 
 @Component({
@@ -8,9 +7,13 @@ import { OrderItemService } from 'src/app/services/orderItem/order-item.service'
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss'],
 })
+
+
 export class OrderComponent implements OnInit {
-  constructor(private orderService: OrderService, private orderItemsService: OrderItemService) {}
+  constructor( private orderItemsService: OrderItemService) {}
   orderData: OrderData[] = [];
+  History: orderHistory[] = [];
+
   getOrderItems() {
     const cartJSON = localStorage.getItem('cartItems');
     if (cartJSON) {
@@ -22,10 +25,10 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.orderService.getOrderHistory().subscribe(
+    this.orderItemsService.getAllOrderItems().subscribe(
       (response) => {
         console.log(response);
-        this.orderData = response.data;
+        this.History = response.data;
       },
       (error) => {
         console.error('Error fetching order history:', error);

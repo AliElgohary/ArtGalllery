@@ -18,3 +18,15 @@ export interface OrderData {
   customer_address: string;
   user_id: number;
 }
+
+export interface orderHistory {
+  id: number;
+  created_at: string;
+  updated_at: string;
+  order_id: number;
+  product_id: number;
+  product_name: string;
+  product_price: string;
+  product_quantity: number;
+  product_subtotal: string;
+}
