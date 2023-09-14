@@ -1,25 +1,28 @@
-<div class="container bg-dark">
+<div class="container dark-bg">
   <div class="row">
     <div class="col-12">
-      <h2>Your Cart</h2>
-      <div *ngIf="cartItems.length === 0" class="alert alert-info">
+      <h2 class="text-light">Your Cart</h2>
+      <div *ngIf="cartItems.length === 0" class="alert alert-info text-light">
         Your cart is empty.
       </div>
-      <ul class="list-group " *ngIf="cartItems.length > 0">
+      <ul class="list-group" *ngIf="cartItems.length > 0">
         <li
-          class="list-group-item d-flex justify-content-between align-items-center "
+          class="list-group-item dark-item"
           *ngFor="let item of cartItems"
         >
-          <div >
-            <img [src]="item.image" [alt]="item.name" height="100" width="80" />
-            <h3>{{ item.name }}</h3>
-            <span>{{item.description}}</span>
+          <div class="row align-items-center">
+            <div class="col-md-3 col-sm-12">
+              <img [src]="item.image" [alt]="item.name" height="100" width="80" />
+            </div>
+            <div class="col-md-9 col-sm-12">
+              <h3 class="text-light">{{ item.name }}</h3>
+              <span class="text-light">{{ item.description }}</span>
+            </div>
           </div>
-          <div>
-            <span>Price: ${{ item.price }}</span>
-
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-light">Price: ${{ item.price }}</span>
             <button
-              class="btn btn-danger btn-sm"
+              class="btn btn-danger"
               (click)="removeFromCart(item)"
             >
               Remove
