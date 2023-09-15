@@ -3,11 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { PanelComponent } from './panel/panel.component';
+import { AllusersComponent } from './allusers/allusers.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { OrderstatusComponent } from './orderstatus/orderstatus.component';
 
 
 @NgModule({
   declarations: [
-    PanelComponent
+    PanelComponent,
+    AllusersComponent,
+    AddproductComponent,
+    OrderstatusComponent
   ],
   imports: [
     CommonModule,

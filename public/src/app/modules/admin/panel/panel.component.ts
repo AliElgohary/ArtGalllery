@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./panel.component.scss']
 })
 export class PanelComponent {
+  activeChild: number = 0;
 
+  toggleChild(childNumber: number) {
+    if (childNumber === this.activeChild) {
+      this.activeChild = 0;
+    } else {
+      this.activeChild = childNumber;
+    }
+  }
 }

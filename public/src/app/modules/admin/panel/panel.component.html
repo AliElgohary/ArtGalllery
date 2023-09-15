@@ -1,1 +1,32 @@
-<p>panel works!</p>
+<div class="container">
+  <H1>this is panel</H1>
+  <button
+    class="btn btn-secodary btn-outline-light btn-lg"
+    (click)="toggleChild(1)"
+  >
+    All Customers
+  </button>
+  <button
+    class="btn btn-secodary btn-outline-light btn-lg"
+    (click)="toggleChild(2)"
+  >
+    Add Product
+  </button>
+  <button
+    class="btn btn-secodary btn-outline-light btn-lg"
+    (click)="toggleChild(3)"
+  >
+    Update Order Status
+  </button>
+  <div *ngIf="activeChild === 1">
+    <app-allusers></app-allusers>
+  </div>
+
+  <div *ngIf="activeChild === 2">
+    <app-addproduct></app-addproduct>
+  </div>
+
+  <div *ngIf="activeChild === 3">
+    <app-orderstatus></app-orderstatus>
+  </div>
+</div>
