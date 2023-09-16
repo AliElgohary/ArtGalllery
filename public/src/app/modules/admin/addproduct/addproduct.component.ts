@@ -38,5 +38,6 @@ export class AddproductComponent {
           console.error('Error adding product:', error);
         }
       );
+        productForm.reset();
   }
 }
