@@ -1,1 +1,23 @@
-<p>allusers works!</p>
+<div class="mainDiv">
+  <h2>Your Customers:</h2>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of AllUsers">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.adress }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

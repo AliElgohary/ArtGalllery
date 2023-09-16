@@ -17,7 +17,8 @@ import { OrderstatusComponent } from './orderstatus/orderstatus.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+
   ]
 })
 export class AdminModule { }
