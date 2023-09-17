@@ -12,6 +12,8 @@ export class ProductsComponentComponent implements OnInit {
   products: any[] = [];
   cartItems: Product[] = [];
   isAdmin: boolean = false;
+  isEditFormOpen: boolean = false;
+  updatedProduct: any = {};
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
@@ -65,4 +67,42 @@ export class ProductsComponentComponent implements OnInit {
       console.error(`User doesn't have permission to delete`);
     }
   }
+
+  openEditForm(product: any) {
+    console.log('openEditForm called');
+    this.updatedProduct = { ...product };
+    this.isEditFormOpen = true;
+    console.log('isEditFormOpen:', this.isEditFormOpen);
+  }
+
+  closeEditForm() {
+    this.isEditFormOpen = false;
+    this.updatedProduct = {};
+  }
+
+  editProduct() {
+    if (this.isAdmin) {
+      const headers = new HttpHeaders({
+        'content-type': 'application/json',
+        Authorization: 'Bearer ' + this.auth.getToken()
+      });
+
+      const productId = this.updatedProduct.id;
+
+      this.http.put(`http://localhost:8000/api/v1/products/${productId}`, this.updatedProduct, { headers })
+        .subscribe(
+          (response) => {
+            console.log('Product updated successfully:', response);
+            this.fetchProduct();
+            this.closeEditForm();
+          },
+          (error) => {
+            console.error('Error updating product:', error);
+          }
+        );
+    } else {
+      console.error(`User doesn't have permission to edit`);
+    }
+  }
+
 }

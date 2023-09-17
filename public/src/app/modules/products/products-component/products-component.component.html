@@ -8,7 +8,32 @@
         <p class="card-text">{{ item.description }}</p>
         <button class="btn" (click)="addToCart(item)" *ngIf="!isAdmin">Add To Cart</button>
         <button class="btn btn-danger" (click)="deleteProduct(item.id)" *ngIf="isAdmin">Delete</button>
+        <button class="btn" (click)="openEditForm(item)" *ngIf="isAdmin">Edit</button>
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="isEditFormOpen" class="edit-form-container">
+  <h2>Edit Product</h2>
+  <form (submit)="editProduct()">
+
+    <div class="mb-3">
+      <label for="productName" class="form-label">Product Name</label>
+      <input [(ngModel)]="updatedProduct.name" class="form-control" id="productName" name="productName" placeholder="Name">
+    </div>
+
+    <div class="mb-3">
+      <label for="productDescription" class="form-label">Product Description</label>
+      <textarea [(ngModel)]="updatedProduct.description" class="form-control" id="productDescription" name="productDescription" placeholder="Description"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="productPrice" class="form-label">Product Price</label>
+      <input [(ngModel)]="updatedProduct.price" type="number" class="form-control" id="productPrice" name="productPrice" placeholder="Price">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="button" (click)="closeEditForm()" class="btn btn-secondary ms-2">Cancel</button>
+  </form>
 </div>
