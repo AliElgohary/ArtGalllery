@@ -68,6 +68,7 @@ export class ProductsComponentComponent implements OnInit {
     }
   }
 
+
   openEditForm(product: any) {
     console.log('openEditForm called');
     this.updatedProduct = { ...product };
