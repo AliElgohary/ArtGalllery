@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from 'src/app/modules/auth/user.model';
 
-
 interface RegistrationData {
   name: string;
   email: string;
@@ -45,6 +44,8 @@ export class AuthService {
           this.userToken = response.data.token;
           this.isAuthenticatedSubject.next(true);
           this.currentUserSubject.next(user);
+
+          localStorage.setItem('userRole', response.role);
         }),
         catchError((error) => {
           return throwError('Login failed: ' + error.message);
@@ -71,5 +72,16 @@ export class AuthService {
   logout(): void {
     this.isAuthenticatedSubject.next(false);
     this.currentUserSubject.next(null);
+    this.userToken = null;
+    localStorage.removeItem('userToken');
+  }
+
+
+  isUserAdmin () : boolean {
+    const user = localStorage.getItem('userRole');
+    if(user === 'admin'){
+     return true;
+    }
+    return false;
   }
 }

@@ -21,11 +21,9 @@ export class LoginComponent {
   login(loginForm: NgForm): void {
     if (loginForm.valid) {
       const formData = loginForm.value;
-
       this.authService.login(formData).subscribe(
         (user) => {
           console.log('User logged in successfully:', user);
-
           this.router.navigate(['/products']);
         },
         (error) => {

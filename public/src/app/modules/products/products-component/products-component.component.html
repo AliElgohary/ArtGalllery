@@ -4,9 +4,10 @@
       <img [src]="item.image" [alt]="item.name">
       <div class="card-body">
         <h3 class="card-title">{{ item.name }}</h3>
-        <h5 class="card-text">price: {{item.price}} $</h5>
+        <h5 class="card-text">Price: {{item.price}} $</h5>
         <p class="card-text">{{ item.description }}</p>
-        <button class="btn" (click)="addToCart(item)">Add To Cart</button>
+        <button class="btn" (click)="addToCart(item)" *ngIf="!isAdmin">Add To Cart</button>
+        <button class="btn btn-danger" (click)="deleteProduct(item.id)" *ngIf="isAdmin">Delete</button>
       </div>
     </div>
   </div>
