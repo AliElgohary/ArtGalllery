@@ -1,4 +1,4 @@
-<form class="container" #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+<form class="container" #productForm="ngForm">
 
   <!-- Product Name input -->
   <div class="form-outline mb-4">
@@ -43,6 +43,6 @@
   </div>
 
   <!-- Submit button (type="submit") -->
-  <button type="submit" class="btn btn-secondary" routerLink="/products">Add Product</button>
+  <button type="submit" class="btn btn-secondary" routerLink="/products" (click)="addProduct(productForm)">Add Product</button>
 
 </form>
