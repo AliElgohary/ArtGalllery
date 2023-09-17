@@ -6,15 +6,15 @@
         <h3 class="card-title">{{ item.name }}</h3>
         <h5 class="card-text">Price: {{item.price}} $</h5>
         <p class="card-text">{{ item.description }}</p>
-        <button class="btn" (click)="addToCart(item)" *ngIf="!isAdmin">Add To Cart</button>
-        <button class="btn btn-danger" (click)="deleteProduct(item.id)" *ngIf="isAdmin">Delete</button>
-        <button class="btn" (click)="openEditForm(item)" *ngIf="isAdmin">Edit</button>
+        <button class="btn btn-outline-secondary" (click)="addToCart(item)" *ngIf="!isAdmin">Add To Cart</button>
+        <button class="btn btn-outline-danger" (click)="deleteProduct(item.id)" *ngIf="isAdmin">Delete</button>
+        <button class="btn btn-outline-secondary" (click)="openEditForm(item)" *ngIf="isAdmin">Edit</button>
       </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="isEditFormOpen" class="edit-form-container">
+<div *ngIf="isEditFormOpen"  class="edit-form-container container bg-dark">
   <h2>Edit Product</h2>
   <form (submit)="editProduct()">
 
