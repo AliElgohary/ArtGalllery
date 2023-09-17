@@ -51,18 +51,25 @@ export class ProductsComponentComponent implements OnInit {
   deleteProduct(id: number) {
     if (this.isAdmin) {
       const headers = new HttpHeaders({
-        'content-type': 'application/json',
-        Authorization: 'Bearer ' + this.auth.getToken()
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.auth.getToken(),
       });
-      this.http.delete(`http://localhost:8000/api/v1/products/${id}`, { headers }).subscribe(
-        (response) => {
-          console.log('Product deleted successfully:', response);
-          this.fetchProduct();
-        },
-        (error) => {
-          console.error('Error deleting product:', error);
-        }
-      );
+
+      this.http.delete(`http://localhost:8000/api/v1/products/${id}`, { headers })
+        .subscribe(
+          (response) => {
+            console.log('Product deleted successfully:', response);
+            this.fetchProduct();
+          },
+          (error) => {
+            if (error.status === 422 && error.error.message === 'Product associated with order items') {
+            console.error('Error deleting product:', error);
+              alert('This product cannot be deleted as it is associated with order item(s).');
+            } else {
+              alert('An error occurred while deleting the product.');
+            }
+          }
+        );
     } else {
       console.error(`User doesn't have permission to delete`);
     }

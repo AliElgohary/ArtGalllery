@@ -1,1 +1,50 @@
-<p>orderstatus works!</p>
+<div class="mainDiv">
+  <h2>Your Orders:</h2>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer Phone</th>
+        <th>Customer Address</th>
+        <th>Order Status</th>
+        <th>Actions</th> <!-- New column for actions -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.customer_phone }}</td>
+        <td>{{ order.customer_address }}</td>
+        <td>{{ order.order_status }}</td>
+        <td>
+          <button class="btn btn-outline-danger" (click)="deleteOrder(order.id)">Delete</button>
+          <button class="btn btn-outline-primary" (click)="editOrderModal(order)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="isEditFormOpen" class="edit-form-container container bg-dark">
+    <h2>Edit Order</h2>
+    <form (submit)="editOrder()">
+
+      <div class="mb-3">
+        <label for="customerPhone" class="form-label">Customer Phone</label>
+        <input [(ngModel)]="updatedOrder.customer_phone" class="form-control" id="customerPhone" name="customerPhone" placeholder="Customer Phone">
+      </div>
+
+      <div class="mb-3">
+        <label for="customerAddress" class="form-label">Customer Address</label>
+        <input [(ngModel)]="updatedOrder.customer_address" class="form-control" id="customerAddress" name="customerAddress" placeholder="Customer Address">
+      </div>
+
+      <div class="mb-3">
+        <label for="orderStatus" class="form-label">Order Status</label>
+        <input [(ngModel)]="updatedOrder.order_status" class="form-control" id="orderStatus" name="orderStatus" placeholder="Order Status">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+      <button type="button" (click)="closeEditForm()" class="btn btn-secondary ms-2">Cancel</button>
+    </form>
+  </div>
+</div>

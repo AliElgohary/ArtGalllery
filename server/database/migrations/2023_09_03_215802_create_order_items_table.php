@@ -23,7 +23,7 @@ return new class extends Migration
             $table->decimal('product_subtotal', 10, 2);
 
             //relationships
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('restrict');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products');
         });
     }
